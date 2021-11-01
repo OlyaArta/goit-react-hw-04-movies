@@ -4,52 +4,42 @@ const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "e17f5f6673d6cd4c9fa8d6770ccbc14c";
 
 // main page, most popular films
-async function fetchTrend() {
-  const results = await axios.get(
-    `${BASE_URL}/trending/all/day?api_key=${API_KEY}`
+export async function fetchTrend() {
+  const { data } = await axios.get(
+    `${BASE_URL}trending/movie/day?api_key=${API_KEY}`
   );
-  console.log(results);
-  return results;
+
+  return data.results;
 }
 
 // fetch by search
-async function fetchMovies(query) {
-  const results = await axios.get(
+export async function fetchMovies(query) {
+  const { data } = await axios.get(
     `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
   );
-  return results;
+  return data;
 }
 
 // get all about film
-async function fetchAboutMovie(id) {
-  const results = await axios.get(
-    `${BASE_URL}/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+export async function fetchAboutMovie(movieId) {
+  const { data } = await axios.get(
+    `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   );
-  return results;
+  return data;
 }
 
 // get about actors
-async function fetchActors(id) {
-  const results = await axios.get(
-    `${BASE_URL}/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`
+export async function fetchActors(movieId) {
+  const { data } = await axios.get(
+    `${BASE_URL}/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
   );
-  return results;
+  return data.cast;
 }
 
 // get reviews of films
-async function fetchReviews(id) {
-  const results = await axios.get(
-    `${BASE_URL}/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+export async function fetchReviews(movieId) {
+  const { data } = await axios.get(
+    `${BASE_URL}/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
   );
-  return results;
+  return data.results;
 }
-
-const api = {
-  fetchTrend,
-  fetchMovies,
-  fetchAboutMovie,
-  fetchActors,
-  fetchReviews,
-};
-
-export default api;
