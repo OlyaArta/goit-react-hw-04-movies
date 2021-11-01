@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { FetchTrend } from "../services/api";
-import Spinner from ".";
+import { FetchTrend } from "../../services/api";
+import Spinner from "../../Components/Loader/Loader";
 import MovieList from "../../Components/MovieList/MovieList";
 
 export default function TrendView() {

@@ -4,7 +4,7 @@ const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "e17f5f6673d6cd4c9fa8d6770ccbc14c";
 
 // main page, most popular films
-export async function fetchTrend() {
+export async function FetchTrend() {
   const { data } = await axios.get(
     `${BASE_URL}trending/movie/day?api_key=${API_KEY}`
   );
@@ -13,7 +13,7 @@ export async function fetchTrend() {
 }
 
 // fetch by search
-export async function fetchMovies(query) {
+export async function FetchMovies(query) {
   const { data } = await axios.get(
     `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
   );
@@ -21,7 +21,7 @@ export async function fetchMovies(query) {
 }
 
 // get all about film
-export async function fetchAboutMovie(movieId) {
+export async function FetchAboutMovie(movieId) {
   const { data } = await axios.get(
     `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
   );
@@ -29,7 +29,7 @@ export async function fetchAboutMovie(movieId) {
 }
 
 // get about actors
-export async function fetchActors(movieId) {
+export async function FetchActors(movieId) {
   const { data } = await axios.get(
     `${BASE_URL}/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
   );
@@ -37,7 +37,7 @@ export async function fetchActors(movieId) {
 }
 
 // get reviews of films
-export async function fetchReviews(movieId) {
+export async function FetchReviews(movieId) {
   const { data } = await axios.get(
     `${BASE_URL}/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
   );
