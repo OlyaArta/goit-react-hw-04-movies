@@ -15,7 +15,7 @@ export async function FetchTrend() {
 // fetch by search
 export async function FetchMovies(query) {
   const { data } = await axios.get(
-    `${BASE_URL}/3/search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+    `${BASE_URL}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`
   );
   return data;
 }
@@ -23,7 +23,7 @@ export async function FetchMovies(query) {
 // get all about film
 export async function FetchAboutMovie(movieId) {
   const { data } = await axios.get(
-    `${BASE_URL}/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+    `${BASE_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`
   );
   return data;
 }
@@ -31,7 +31,7 @@ export async function FetchAboutMovie(movieId) {
 // get about actors
 export async function FetchActors(movieId) {
   const { data } = await axios.get(
-    `${BASE_URL}/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+    `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
   );
   return data.cast;
 }
@@ -39,7 +39,7 @@ export async function FetchActors(movieId) {
 // get reviews of films
 export async function FetchReviews(movieId) {
   const { data } = await axios.get(
-    `${BASE_URL}/3/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+    `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
   );
   return data.results;
 }
