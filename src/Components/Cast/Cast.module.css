@@ -1,0 +1,12 @@
+.item {
+  display: flex;
+
+  margin-bottom: 20px;
+}
+
+.img {
+  display: block;
+  width: 120px;
+  height: 200px;
+  background-size: cover;
+}

@@ -4,6 +4,7 @@ import { FetchActors } from "../../services/api";
 import Spinner from "../Loader/Loader";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import s from "../Cast/Cast.module.css";
 
 export default function Cast() {
   const [credits, setCredits] = useState(null);
@@ -37,7 +38,7 @@ export default function Cast() {
       {credits && (
         <ul>
           {credits.map(({ id, name, character, profile_path }) => (
-            <li key={id}>
+            <li key={id} className={s.item}>
               <img
                 src={
                   profile_path
@@ -46,8 +47,8 @@ export default function Cast() {
                 }
                 alt={name}
               />
-              <h3>{name}</h3>
-              <h4>Character: {character}</h4>
+              <p>{name}</p>
+              <p>Character: {character}</p>
             </li>
           ))}
         </ul>
