@@ -1,8 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 import s from "./Searchbar.module.css";
+import { toast } from "react-toastify";
 
 export default function Searchbar({ onSubmit }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,7 +14,7 @@ export default function Searchbar({ onSubmit }) {
     event.preventDefault();
 
     if (searchQuery.trim() === "") {
-      //   toast("Empty input!");
+      toast("Empty input!");
       return;
     }
     onSubmit(searchQuery);

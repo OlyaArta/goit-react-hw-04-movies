@@ -2,21 +2,24 @@ import { FetchReviews } from "../../services/api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Spinner from "../Loader/Loader";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Reviews() {
-  const [loader, setLoader] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
     async function getReviews() {
       try {
-        setLoader(true);
+        setSpinner(true);
         const result = await FetchReviews(movieId);
         setReviews(result);
       } catch (error) {
+        toast.error(error.message, { theme: "colored" });
       } finally {
-        setLoader(false);
+        setSpinner(false);
         window.scrollTo({
           top: 700,
           behavior: "smooth",
@@ -28,19 +31,19 @@ export default function Reviews() {
 
   return (
     <>
-      {loader && <Spinner />}
+      {spinner && <Spinner />}
 
       {reviews && (
         <ul>
           {reviews.map(({ id, author, content }) => (
             <li key={id}>
-              <h4>Author: {author}</h4>
+              <h3>Author: {author}</h3>
               <p>{content}</p>
             </li>
           ))}
         </ul>
       )}
-      {!reviews && <h3>Ooops, it`s empty!.</h3>}
+      {!reviews && <h3>Ooops, it`s empty!</h3>}
     </>
   );
 }

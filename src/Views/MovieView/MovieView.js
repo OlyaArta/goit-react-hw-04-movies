@@ -4,6 +4,8 @@ import Spinner from "../../Components/Loader/Loader";
 import MovieList from "../../Components/MovieList/MovieList";
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function MovieView() {
   const [loader, setLoader] = useState(false);
@@ -24,8 +26,14 @@ export default function MovieView() {
         setLoader(true);
         const data = await FetchMovies(queryUrl ?? query);
         const { results } = data;
+        if (!results.length) {
+          toast.info("Check the correctness of the input", {
+            theme: "colored",
+          });
+        }
         setMovies(results);
       } catch (error) {
+        toast.error("No such results", { theme: "colored" });
       } finally {
         setLoader(false);
       }

@@ -5,10 +5,10 @@ import { Route, Switch } from "react-router-dom";
 import MainBar from "./Components/MainBar/MainBar";
 import Container from "./Components/Container/Container";
 import Loader from "./Components/Loader/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Homepage = lazy(() =>
-  import("./Views/TrendView/TrendView" /*webpackChunkName: "home-page" */)
-);
+const TrendView = lazy(() => import("./Views/TrendView/TrendView"));
 
 const AboutMovie = lazy(() => import("./Views/AboutMovie/AboutMovie"));
 const MovieView = lazy(() => import("./Views/MovieView/MovieView"));
@@ -21,7 +21,7 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route path="/" exact>
-              <Homepage />
+              <TrendView />
             </Route>
             <Route path="/movies" exact>
               <MovieView />
@@ -31,6 +31,7 @@ function App() {
             </Route>
           </Switch>
         </Suspense>
+        <ToastContainer />
       </Container>
     </div>
   );

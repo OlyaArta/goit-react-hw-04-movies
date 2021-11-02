@@ -11,6 +11,8 @@ import { useRef } from "react";
 import { FetchAboutMovie } from "../../services/api";
 import Spinner from "../../Components/Loader/Loader";
 import MovieInfo from "../../Components/MovieInfo/MovieInfo";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Reviews = lazy(() => import("../../Components/Reviews/Reviews"));
 const Cast = lazy(() => import("../../Components/Cast/Cast"));
@@ -21,18 +23,19 @@ export default function AboutMovie() {
   const history = useHistory();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const [loader, setLoader] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const currentState = useRef(location.state?.from).current;
 
   useEffect(() => {
     async function AboutMoviePage() {
       try {
-        setLoader(true);
+        setSpinner(true);
         const result = await FetchAboutMovie(movieId);
         setMovie({ ...result });
       } catch (error) {
+        toast.error(error.message, { theme: "colored" });
       } finally {
-        setLoader(false);
+        setSpinner(false);
       }
     }
     AboutMoviePage();
@@ -44,7 +47,7 @@ export default function AboutMovie() {
 
   return (
     <>
-      {loader && <Spinner />}
+      {spinner && <Spinner />}
       <button type="button" onClick={BackBtn}>
         Back to movies
       </button>

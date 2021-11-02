@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { FetchActors } from "../../services/api";
 import Spinner from "../Loader/Loader";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Cast() {
   const [credits, setCredits] = useState(null);
@@ -15,6 +17,7 @@ export default function Cast() {
         const cast = await FetchActors(movieId);
         setCredits(cast);
       } catch (error) {
+        toast.error(error.message, { theme: "colored" });
       } finally {
         setLoader(false);
         window.scrollTo({
@@ -39,7 +42,7 @@ export default function Cast() {
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w300${profile_path}`
-                    : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg"
+                    : `http://placekitten.com/200/300`
                 }
                 alt={name}
               />

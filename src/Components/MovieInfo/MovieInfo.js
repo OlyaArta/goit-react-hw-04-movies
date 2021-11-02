@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function MovieInfo({
   poster,
   title,
@@ -30,3 +32,13 @@ export default function MovieInfo({
     </>
   );
 }
+
+MovieInfo.propTypes = {
+  title: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string.isRequired,
+  popularity: PropTypes.number.isRequired,
+  vote: PropTypes.number.isRequired,
+  genres: PropTypes.string.isRequired,
+};
