@@ -29,6 +29,8 @@ export default function Reviews() {
     getReviews();
   }, [movieId]);
 
+  const emptyMessage = "Ooops, it`s empty!";
+
   return (
     <>
       {spinner && <Spinner />}
@@ -43,7 +45,7 @@ export default function Reviews() {
           ))}
         </ul>
       )}
-      {!reviews && <h3>Ooops, it`s empty!</h3>}
+      {!reviews && !spinner && emptyMessage}
     </>
   );
 }

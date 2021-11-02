@@ -1,0 +1,14 @@
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.link {
+  margin-bottom: 5px;
+}

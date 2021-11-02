@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import s from "./MovieInfo.module.css";
 
 export default function MovieInfo({
   poster,
@@ -11,11 +12,11 @@ export default function MovieInfo({
 }) {
   return (
     <>
-      <div>
-        <div>
+      <div className={s.movieBox}>
+        <div className={s.imgBox}>
           <img src={`https://image.tmdb.org/t/p/w300${poster}`} alt={title} />
         </div>
-        <div>
+        <div className={s.imgBox}>
           <h2>
             {title}({releaseDate ? releaseDate.split("-")[0] : ""})
           </h2>

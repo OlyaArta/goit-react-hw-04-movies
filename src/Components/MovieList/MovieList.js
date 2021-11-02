@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
-// import s from "./MovieList.module.css";
+import s from "./MovieList.module.css";
 
 export default function MovieList({ movies }) {
   const location = useLocation();
@@ -8,7 +8,7 @@ export default function MovieList({ movies }) {
   return (
     <ul>
       {movies.map((movie) => (
-        <li key={movie.id}>
+        <li key={movie.id} className={s.link}>
           <Link
             to={{
               pathname: `/movies/${movie.id}`,

@@ -26,11 +26,6 @@ export default function MovieView() {
         setLoader(true);
         const data = await FetchMovies(queryUrl ?? query);
         const { results } = data;
-        if (!results.length) {
-          toast.info("Check the correctness of the input", {
-            theme: "colored",
-          });
-        }
         setMovies(results);
       } catch (error) {
         toast.error("No such results", { theme: "colored" });

@@ -1,0 +1,10 @@
+.imgBox {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.movieBox {
+  display: flex;
+  margin-top: 50px;
+}

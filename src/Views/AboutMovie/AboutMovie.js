@@ -24,7 +24,8 @@ export default function AboutMovie() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [spinner, setSpinner] = useState(false);
-  const currentState = useRef(location.state?.from).current;
+  const currentRef = useRef(location.state?.from).current;
+  console.log(currentRef);
 
   useEffect(() => {
     async function AboutMoviePage() {
@@ -42,7 +43,7 @@ export default function AboutMovie() {
   }, [movieId]);
 
   const BackBtn = () => {
-    history.push(currentState ?? "/");
+    history.push(currentRef ?? "/");
   };
 
   return (
