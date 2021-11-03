@@ -36,7 +36,7 @@ export default function Cast() {
     <>
       {loader && <Spinner />}
       {credits && (
-        <ul>
+        <ul className={s.list}>
           {credits.map(({ id, name, character, profile_path }) => (
             <li key={id} className={s.item}>
               <img

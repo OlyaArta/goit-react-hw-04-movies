@@ -30,6 +30,7 @@ export default function Reviews() {
   }, [movieId]);
 
   const emptyMessage = "Ooops, it`s empty!";
+  // const notify = () => toast("Ooops, it`s empty!");
 
   return (
     <>

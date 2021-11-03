@@ -13,6 +13,8 @@ import Spinner from "../../Components/Loader/Loader";
 import MovieInfo from "../../Components/MovieInfo/MovieInfo";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import s from "./AboutMovie.module.css";
+import GoBackBtn from "../../Components/Button/Button";
 
 const Reviews = lazy(() => import("../../Components/Reviews/Reviews"));
 const Cast = lazy(() => import("../../Components/Cast/Cast"));
@@ -42,16 +44,14 @@ export default function AboutMovie() {
     AboutMoviePage();
   }, [movieId]);
 
-  const BackBtn = () => {
+  const backBtn = () => {
     history.push(currentRef ?? "/");
   };
 
   return (
     <>
       {spinner && <Spinner />}
-      <button type="button" onClick={BackBtn}>
-        Back to movies
-      </button>
+      <GoBackBtn backBtn={backBtn} />
       {movie && (
         <MovieInfo
           title={movie.title}
@@ -66,12 +66,12 @@ export default function AboutMovie() {
       <h2>Additional information</h2>
       <ul>
         <li>
-          <Link to={`${url}/cast`}>
+          <Link to={`${url}/cast`} className={s.menu}>
             <p>Cast</p>
           </Link>
         </li>
         <li>
-          <Link to={`${url}/reviews`}>
+          <Link to={`${url}/reviews`} className={s.menu}>
             <p>Reviews</p>
           </Link>
         </li>
